@@ -1,0 +1,80 @@
+﻿<UserControl x:Class="Chef_tracker.Views.Tasks"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Chef_tracker.Views"
+             
+             xmlns:vm="clr-namespace:Chef_tracker.ViewsModels"
+             mc:Ignorable="d" 
+              d:DesignHeight="600" d:DesignWidth="622">
+    <UserControl.DataContext>
+        <vm:TasksVM/>
+    </UserControl.DataContext>
+        
+
+    <StackPanel Margin="40,0,0,0">
+        
+        <Grid Background="White">
+            <TextBlock Text="Tâches" FontSize="40" FontWeight="Bold" Foreground="#FFB438" HorizontalAlignment="Center" FontStretch="ExtraExpanded"/>
+        </Grid>
+        <ItemsControl ItemsSource="{Binding TasksData}">
+            <ItemsControl.ItemsPanel>
+                <!-- Utiliser un WrapPanel pour l'agencement des cards -->
+                <ItemsPanelTemplate>
+                    <WrapPanel />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+
+            <ItemsControl.ItemTemplate>
+                <!-- Modèle d'une card -->
+                <DataTemplate>
+                    <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="5" 
+                            Margin="10" Background="White" Width="200" Height="150">
+                        <DockPanel LastChildFill="False">
+                            <!-- Bouton en bas -->
+                            <StackPanel
+                                Background="#FFB438"
+                                DockPanel.Dock="Bottom"
+                                >
+                                
+                                <Button Content="Valider"
+                                HorizontalAlignment="Stretch" 
+                                Background="Transparent"
+                                BorderThickness="0"
+                                FontWeight="Bold"
+                                Foreground="White"
+                                Margin="10"
+                                Command="{Binding DataContext.DeleteTaskCommand, RelativeSource={RelativeSource AncestorType=UserControl} }"
+                                CommandParameter="{Binding}"
+                                       >
+                                    
+                                    <Button.Template>
+                                    <ControlTemplate TargetType="Button">
+                                        <Border Background="{TemplateBinding Background}">
+                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Button.Template>
+                                </Button>
+                            </StackPanel>
+                            <!-- Contenu principal au-dessus -->
+                            <StackPanel  >
+                                <!-- Titre de la card -->
+                                <TextBlock Text="{Binding Task}" 
+                                        FontWeight="Bold" FontSize="18" 
+                
+                                        Margin="5,30,0,0" TextAlignment="Center" />
+
+                                <TextBlock Text="{Binding User}" 
+                                        FontWeight="Medium"  FontSize="16" 
+                                        Margin="15,5,0,0" TextAlignment="Center" />
+
+                            </StackPanel>
+                        </DockPanel>
+                    </Border>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+    </StackPanel>
+</UserControl>

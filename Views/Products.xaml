@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="Chef_tracker.Views.Products"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+            xmlns:vm="clr-namespace:Chef_tracker.ViewsModels"
+            xmlns:local="clr-namespace:Chef_tracker.Views"
+            mc:Ignorable="d" 
+            d:DesignHeight="600" d:DesignWidth="622">
+    <UserControl.DataContext>
+        <vm:ProductsVM/>
+    </UserControl.DataContext>
+    <Grid Background="White">
+        <StackPanel>
+        <TextBlock Text="Produits" FontSize="40" FontWeight="Bold" Foreground="#FFB438" HorizontalAlignment="Center" FontStretch="ExtraExpanded" Margin="0,0,0,20"/>
+            <ListView x:Name="DataGridItems" HorizontalAlignment="Stretch" FontSize="15" VerticalAlignment="Stretch" ItemsSource="{Binding Products}" BorderThickness="0" Foreground="Black" Padding="10,0,10,0">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ProductId}" Width="100" />
+                        <GridViewColumn Header="name" DisplayMemberBinding="{Binding Name}" Width="200" />
+                        <GridViewColumn Header="Date Exp" DisplayMemberBinding="{Binding DateExp}" Width="200" />
+                        <GridViewColumn Header="Statut" DisplayMemberBinding="{Binding Statut}" Width="200" />
+                        
+                    </GridView>
+
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,59 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:vm="clr-namespace:Chef_tracker.ViewsModels"
+                    xmlns:view="clr-namespace:Chef_tracker.Views"
+                    >
+    <DataTemplate DataType="{x:Type vm:HomeVM}">
+        <view:home />
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:AdminHomeVM}">
+            <view:AdminHome />
+        </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:ProductsVM}">
+        <view:Products />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:AdminConVM}" >
+        <view:AdminCon/>
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:AddProductVM}">
+        <view:AddProduct />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:AddUserVM}">
+        <view:AddUsers />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:AdminProductsVM}">
+        <view:AdminProducts />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:AdminUsersVM}">
+        <view:AdminUsers />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:TasksVM}">
+        <view:Tasks />
+    </DataTemplate>
+
+    <DataTemplate DataType="{x:Type vm:AdminTaskVM}">
+        <view:AdminTask />
+        
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:AddTaskVM}">
+        <view:AddTask />
+    </DataTemplate> 
+    
+    <DataTemplate DataType="{x:Type vm:TaskByTaskVM}">
+        <view:TaskByTask />
+    </DataTemplate>
+    
+    <DataTemplate DataType="{x:Type vm:addTaskByTaskVM}">
+        <view:AddTaskByTask />
+    </DataTemplate>
+
+</ResourceDictionary>

@@ -1,0 +1,66 @@
+﻿<UserControl x:Class="Chef_tracker.Views.AdminProducts"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Chef_tracker.Views"
+              xmlns:vm="clr-namespace:Chef_tracker.ViewsModels"
+ mc:Ignorable="d" 
+ d:DesignHeight="600" d:DesignWidth="622">
+    <UserControl.DataContext>
+        <vm:AdminProductsVM/>
+    </UserControl.DataContext>
+    <Grid Background="White">
+        <StackPanel  >
+            
+            <TextBlock Text="Produits" FontSize="40" FontWeight="Bold" Foreground="#FFB438" HorizontalAlignment="Center" FontStretch="ExtraExpanded"/>
+            <StackPanel  Orientation="Horizontal" HorizontalAlignment="Stretch">
+                <StackPanel.DataContext>
+                    <Binding Path="DataContext" RelativeSource="{RelativeSource AncestorType={x:Type Window}}" />
+                </StackPanel.DataContext>
+                <Button Content="Dashbord"
+                     HorizontalAlignment="Stretch"  VerticalAlignment="Center" 
+                     Background="Transparent"
+                     BorderThickness="0"
+                     FontWeight="Bold"
+                     Foreground="#FFB438"
+                     Margin="10"
+                     Command="{Binding AdminHomeCommand}">
+
+                    
+                </Button>
+                <Button Content="Ajouter un produit"
+                     HorizontalAlignment="Stretch" 
+                     Background="Transparent"
+                     BorderThickness="0"
+                     FontWeight="Bold"
+                     Foreground="#FFB438"
+                     Margin="10"
+                     Command="{Binding  AddProductCommand}"
+                            >    
+                </Button>
+            </StackPanel>
+            <ListView x:Name="DataGridItems" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontSize="15" FontWeight="SemiBold" ItemsSource="{Binding Products}" Foreground="Black">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ProductId}" Width="100" />
+                        <GridViewColumn Header="name" DisplayMemberBinding="{Binding Name}" Width="210" />
+                        <GridViewColumn Header="Date Exp" DisplayMemberBinding="{Binding DateExp}" Width="200" />
+                        <GridViewColumn Header="Statut" DisplayMemberBinding="{Binding Statut}" Width="100" />
+                        <!-- Colonne Bouton "Modif" -->
+                        <GridViewColumn Header="Action" Width="100">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Button Content="Supprimer" Background="Red" Foreground="White"  Width="100"
+                    Command="{Binding DataContext.DeleteProductCommand, RelativeSource={RelativeSource AncestorType=ListView}}" 
+                    CommandParameter="{Binding}" />
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView>
+                    
+                </ListView.View>
+            </ListView>
+        </StackPanel>
+    </Grid>
+</UserControl>

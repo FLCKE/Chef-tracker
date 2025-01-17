@@ -1,0 +1,93 @@
+﻿<Window x:Class="Chef_tracker.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Chef_tracker.ViewsModels"
+        xmlns:Menu="clr-namespace:Chef_tracker.Utilities"
+        xmlns:diag="clr-namespace:System.Diagnostics;assembly=WindowsBase"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        Height="600"
+        Width="850"
+        AllowsTransparency="True"
+        WindowStartupLocation="CenterScreen"
+        WindowStyle="None"
+        Background="Transparent">
+    <Window.DataContext>
+        <local:NavigationVM />
+    </Window.DataContext>
+
+    <Grid>
+        <Border Background="white" CornerRadius="20"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="100" />
+                <ColumnDefinition Width="750" />
+            </Grid.ColumnDefinitions>
+            <Grid HorizontalAlignment="Left" Width="100">
+                <Border Background="#FFB438">
+                    <Image Source="Image/logo.png" HorizontalAlignment="Center" VerticalAlignment="Top"/>
+                       
+                </Border>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="90" >
+                    <Menu:Btn Style="{StaticResource BtnStyle}" 
+                              Command="{Binding HomeCommand}"
+                             >
+                        <Grid HorizontalAlignment="Left" Width="90">
+
+                            <Image Source="Image/home.png" Width="50" Height="50" />
+
+                          
+                        </Grid>
+                    </Menu:Btn>
+                    <Menu:Btn Style="{StaticResource BtnStyle}" Margin="0,30,0,0" 
+                              Command="{Binding TasksCommand}"
+                              >
+                        <Grid HorizontalAlignment="Left" Width="90">
+
+                            <Image Source="Image/list.png" Width="50" Height="50" />
+
+                          
+                        </Grid>
+                    </Menu:Btn>
+                    <Menu:Btn Style="{StaticResource BtnStyle}" 
+                              Margin="0,30,0,0"
+                              Command="{Binding ProductsCommand}"
+                             >
+                        <Grid HorizontalAlignment="Left" Width="90">
+
+                            <Image Source="Image/trolley.png" Width="50" Height="50" />
+
+                          
+                        </Grid>
+                    </Menu:Btn>
+                </StackPanel>
+                <Button  
+                    Margin="0,0,0,10"
+                    VerticalAlignment="Bottom"
+                    Command="{Binding AdminConCommand}" 
+                    Background="Transparent" 
+                    BorderThickness="0"
+                   >
+                    <Button.Template>
+                        <ControlTemplate TargetType="Button">
+                            <Border Background="{TemplateBinding Background}">
+                                <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                            </Border>
+                        </ControlTemplate>
+                    </Button.Template>
+
+                    <Image Source="Image/user.png" Width="50" Height="50" />
+                </Button>
+
+            </Grid>
+            <Grid Grid.Column="1">
+
+                <ContentControl x:Name="Pages"
+                                Content="{Binding CurrentView, diag:PresentationTraceSources.TraceLevel=High}" />
+
+            </Grid>
+        </Grid>
+    </Grid>
+</Window>
