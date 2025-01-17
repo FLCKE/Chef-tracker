@@ -1,6 +1,6 @@
 # ChefTracker
 
-ChefTracker est une application de gestion pour les cuisines de restaurants, divisée en deux parties : l'utilisateur et l'admin.
+ChefTracker est une application de gestion pour les cuisines de restaurants, divisée en deux parties : l'utilisateur et manager.
 
 ## Fonctionnalités
 
